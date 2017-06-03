@@ -1,4 +1,4 @@
-# Completable Future with JAX-RS 2.1 CDI 2.0 (Java EE 8) Demo
+# Completable Future with JAX-RS 2.1 CDI 2.0 (Java 9 + Java EE 8) Demo
 
 For this demo you need installed latest Java 9 JDK.
 
