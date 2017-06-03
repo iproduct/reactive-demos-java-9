@@ -27,15 +27,16 @@ public class CompletableFutureStream {
    				.map(CompletableFuture::join)
    				.collect(Collectors.toList())
 		   	);
-		try {
-			System.out.println(results.get(10, TimeUnit.SECONDS));
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			System.out.println(results.get(10, TimeUnit.SECONDS));
+//		} catch (ExecutionException e) {
+//			e.printStackTrace();
+//		} catch (TimeoutException e) {
+//			e.printStackTrace();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+		System.out.println(results.join());
 		executor.shutdown();
 	}
 	
@@ -47,9 +48,9 @@ public class CompletableFutureStream {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-//			if (i == 13) {
-//				throw new RuntimeException("Exception - result can not be 13!");
-//			}
+			if (i == 13) {
+				throw new RuntimeException("Exception - result can not be 13!");
+			}
 			return i + "-" + "test";
 		}, executor);
 	}

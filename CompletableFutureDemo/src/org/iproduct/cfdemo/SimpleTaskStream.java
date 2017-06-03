@@ -19,6 +19,7 @@ public class SimpleTaskStream {
 	}
 
 	private String longTask(int i) {
+		//Simulate long running task
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
