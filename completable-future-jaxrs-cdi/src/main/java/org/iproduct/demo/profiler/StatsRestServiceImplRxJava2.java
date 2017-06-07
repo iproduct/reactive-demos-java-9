@@ -18,10 +18,10 @@
  */
 package org.iproduct.demo.profiler;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Date;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.ObservesAsync;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -33,25 +33,34 @@ import javax.ws.rs.sse.Sse;
 import javax.ws.rs.sse.SseBroadcaster;
 import javax.ws.rs.sse.SseEventSink;
 
-import org.iproduct.demo.profiler.cdi.qualifiers.CpuProfiling;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import io.reactivex.Emitter;
+import io.reactivex.Flowable;
+import io.reactivex.schedulers.Schedulers;
 
 @Path("/stats")
-@ApplicationScoped
-public class StatsRestServiceImpl {
-	private Logger logger = LoggerFactory.getLogger(StatsRestServiceImpl.class);
+public class StatsRestServiceImplRxJava2 {
+    private static final Random RANDOM = new Random();
 
-    private AtomicInteger i = new AtomicInteger();
     private SseBroadcaster broadcaster;
-    private volatile Builder builder;
+    private Builder builder;
+    private Profiler profiler = new Profiler();
+
 
     @Context 
     public void setSse(Sse sse) {
         this.broadcaster = sse.newBroadcaster();
         this.builder = sse.newEventBuilder();
-    }
         
+        Flowable
+            .interval(500, TimeUnit.MILLISECONDS)
+            .zipWith(
+                Flowable.generate((Emitter<OutboundSseEvent.Builder> emitter) -> emitter.onNext(builder.name("stats"))),
+                (id, bldr) -> createStatsEvent(bldr, id)
+            )
+            .subscribeOn(Schedulers.single())
+            .subscribe(broadcaster::broadcast);
+    }
+    
     @GET
     @Path("sse")
     @Produces(MediaType.SERVER_SENT_EVENTS)
@@ -59,18 +68,11 @@ public class StatsRestServiceImpl {
         broadcaster.register(sink);
     }
 
-    public void asyncProcessingCpuLoad(@ObservesAsync @CpuProfiling CpuLoad cpuLoad) {
-    	OutboundSseEvent sseEvent = createStatsEvent(builder, cpuLoad);
-    	broadcaster.broadcast(sseEvent);
-
-    }
-
-    private OutboundSseEvent createStatsEvent(final OutboundSseEvent.Builder builder, CpuLoad cpuLoad) {
-    	OutboundSseEvent event = builder
-        	.name("stats")
-            .data(CpuLoad.class, cpuLoad)
+    private OutboundSseEvent createStatsEvent(final OutboundSseEvent.Builder builder, final long eventId) {
+        return builder
+            .id("" + eventId)
+            .data(CpuLoad.class, new CpuLoad(new Date().getTime(), (int) profiler.getJavaCPULoad()))
             .mediaType(MediaType.APPLICATION_JSON_TYPE)
             .build();
-    	return event;
     }
 }

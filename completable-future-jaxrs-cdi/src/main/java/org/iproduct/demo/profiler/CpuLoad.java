@@ -53,4 +53,9 @@ public class CpuLoad implements Serializable {
     public void setLoad(int load) {
         this.load = load;
     }
+    
+    public String toString() { 
+    	return "CpuLoad[" + timestamp + ", " + load + "]";
+    }
+    
 }

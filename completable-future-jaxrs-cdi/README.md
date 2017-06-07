@@ -11,6 +11,6 @@ Follow next steps to start the server:
 --add-modules=java.se.ee --permit-illegal-access  --patch-module java.xml.ws.annotation=./myannotation.jar
 ```
 
-3. Open http://localhost:8686/javacpu/
+3. Open http://localhost:8080/javacpu/
 
 Enjoy!

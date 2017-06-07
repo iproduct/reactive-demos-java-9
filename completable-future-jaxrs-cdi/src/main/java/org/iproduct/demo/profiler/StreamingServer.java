@@ -33,7 +33,7 @@ import org.jboss.weld.environment.servlet.Listener;
 public final class StreamingServer {
 
     public static void main(final String[] args) throws Exception {
-        final Server server = new Server(8686);
+        final Server server = new Server(8080);
 
         final ServletHolder staticHolder = new ServletHolder(new DefaultServlet());
         final ServletContextHandler staticContext = new ServletContextHandler();

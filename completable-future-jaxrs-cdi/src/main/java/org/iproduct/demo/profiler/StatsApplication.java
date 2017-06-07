@@ -21,17 +21,20 @@ package org.iproduct.demo.profiler;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-
 import org.apache.cxf.jaxrs.sse.SseFeature;
 
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+
 @ApplicationPath("api")
+@ApplicationScoped
 public class StatsApplication extends Application {
     @Inject private StatsRestServiceImpl statsRestService;
+//    @Inject private StatsRestServiceImplRxJava2 statsRestService;
 
     @Override
     public Set<Object> getSingletons() {
