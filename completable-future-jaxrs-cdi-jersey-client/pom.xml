@@ -14,32 +14,6 @@
 		<cxf.jetty9.version>9.4.3.v20170317</cxf.jetty9.version>
 	</properties>
 
-	<profiles>
-		<profile>
-			<id>server</id>
-			<build>
-				<defaultGoal>test</defaultGoal>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>test</phase>
-								<goals>
-									<goal>java</goal>
-								</goals>
-								<configuration>
-									<mainClass>org.iproduct.demo.profiler.server.ProfilerStreamingServer</mainClass>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
 	<build>
 		<finalName>completable-future-jaxrs-cdi-jersey</finalName>
 		<plugins>
