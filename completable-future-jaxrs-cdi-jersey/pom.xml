@@ -117,12 +117,12 @@
 		<dependency> <!-- this is to avoid Jersey jars to be bundled with the WAR -->
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet-core</artifactId>
-			<version>${jersey.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-server</artifactId>
-			<version>${jersey.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
@@ -130,11 +130,6 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-sse</artifactId>
-			<version>${jersey.version}</version>
-		</dependency>
 		<!-- JSON support -->
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
@@ -145,7 +140,7 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
 			<artifactId>jersey-media-sse</artifactId>
-			<version>${jersey.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- CDI 2.0 -->
@@ -159,7 +154,7 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-jetty-servlet</artifactId>
-			<version>${jersey.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
