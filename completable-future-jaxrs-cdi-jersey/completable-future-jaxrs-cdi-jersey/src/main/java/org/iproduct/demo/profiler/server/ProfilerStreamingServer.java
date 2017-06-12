@@ -30,7 +30,6 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.iproduct.demo.profiler.server.app.ProfilerApplication;
-import org.iproduct.demo.profiler.server.resources.MyResource;
 import org.jboss.weld.environment.servlet.BeanManagerResourceBindingListener;
 import org.jboss.weld.environment.servlet.Listener;
 
@@ -45,7 +44,6 @@ public final class ProfilerStreamingServer {
 //		Weld weld = new Weld();
 //		weld.initialize();
 
-		ResourceConfig config = new ResourceConfig(MyResource.class);
 
 		// Grizzly config
 		// final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI,
@@ -65,11 +63,6 @@ public final class ProfilerStreamingServer {
 		
 		final ServletContextHandler context = new ServletContextHandler();
 		context.setContextPath("/");
-
-//		 Handler restHandler = server.getHandler();
-//		 context.setHandler(restHandler);
-			 
-//		context.setResourceBase("src/main/resources");
 	
 		// Add CDI (Weld) listener
 		context.addEventListener(new Listener());
@@ -90,39 +83,6 @@ public final class ProfilerStreamingServer {
 		handlers.addHandler(context);
 		server.setHandler(handlers);
 
-		// final ServletContextHandler context = new ServletContextHandler();
-		// context.setContextPath("/");
-		//
-		// context.addEventListener(new Listener());
-		// context.addEventListener(new BeanManagerResourceBindingListener());
-		// context.addServlet(cxfServletHolder, "/rest/*");
-		// //
-		// HandlerList handlers = new HandlerList();
-		// handlers.addHandler(staticContext);
-		// handlers.addHandler(context);
-		// //
-		// server.setHandler(handlers);
-
-		// CXF dispatcher servlet registration
-		// final CXFCdiServlet cxfServlet = new CXFCdiServlet();
-		// final ServletHolder cxfServletHolder = new ServletHolder(cxfServlet);
-		// cxfServletHolder.setInitParameter(CXFCdiServlet.TRANSPORT_ID,
-		// SseHttpTransportFactory.TRANSPORT_ID);
-		//
-
-		// final ServletContextHandler context = new ServletContextHandler();
-		// context.setContextPath("/");
-		//
-		// // Add CDI (Weld) listener
-		// context.addEventListener(new Listener());
-		// context.addEventListener(new BeanManagerResourceBindingListener());
-		// context.addServlet(cxfServletHolder, "/rest/*");
-		//
-		// HandlerList handlers = new HandlerList();
-		// handlers.addHandler(staticContext);
-		// handlers.addHandler(context);
-		//
-		// server.setHandler(handlers);
 		server.start();
 		server.join(); // Jetty
 
