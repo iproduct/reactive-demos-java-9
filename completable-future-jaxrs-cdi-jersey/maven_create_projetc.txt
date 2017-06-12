@@ -1,0 +1,1 @@
+mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-webapp -DarchetypeGroupId=org.glassfish.jersey.archetypes -DinteractiveMode=true -DgroupId=org.iproduct.demos -DartifactId=completable-future-jaxrs-cdi-jersey  -Dpackage=org.iproduct.demo.profiler -DarchetypeVersion=2.26-b04
