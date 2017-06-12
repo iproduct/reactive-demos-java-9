@@ -12,7 +12,7 @@ with following VM arguments:
 --add-modules=java.se.ee --permit-illegal-access  --patch-module java.xml.ws.annotation=./myannotation.jar
 ```
 
-3 (Optional). Open http://localhost:8080/javacpu/
+3. (Optional) Open http://localhost:8080/javacpu/
 
 4. Run the `org.iproduct.demo.profiler.client.ProfilerAppClient` from this project.
 
