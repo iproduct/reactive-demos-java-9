@@ -6,11 +6,11 @@ Follow next steps to start the server:
 
 1. Run `mvn install` in project's main folder
 
-2. Run `org.iproduct.demo.profiler.StreamingServer` with following VM arguments: 
+2. Run `org.iproduct.demo.profiler.StreamingServer` from `completable-future-jaxrs-cdi-jersey` project
+with following VM arguments: 
 ```
 --add-modules=java.se.ee --permit-illegal-access  --patch-module java.xml.ws.annotation=./myannotation.jar
 ```
-from `completable-future-jaxrs-cdi-jersey` project.
 
 3 (Optional). Open http://localhost:8080/javacpu/
 
