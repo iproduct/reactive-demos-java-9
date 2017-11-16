@@ -20,14 +20,13 @@
 		</div>
 	</div>
 </body>
-</html>
 
 <script type="text/javascript">
 	var api = "http://localhost:8080/rest/api/";
 
 	var chart = new Highcharts.Chart({
 		title : {
-			text: 'JAVA Processes CPU Load'
+			text : 'JAVA Processes CPU Load'
 		},
 		chart : {
 			renderTo : 'chart',
@@ -37,8 +36,8 @@
 			type : 'datetime',
 		},
 		yAxis : {
-			min: 0,
-			max: 10000
+			min : 0,
+			max : 10000
 		},
 		series : [ {
 			name : "CPU",
@@ -49,7 +48,7 @@
 	if (!!window.EventSource) {
 		var event = new EventSource(api + "stats/sse");
 
-		event.addEventListener('message', function(event) {
+		event.addEventListener('stats', function(event) {
 			var datapoint = jQuery.parseJSON(event.data);
 
 			chart.series[0].addPoint({
@@ -72,22 +71,23 @@
 
 	function updateProcesses() {
 		$
-				.getJSON(api + "processes")
-				.done(
-						function(data) {
-							var items = [];
-							$
-									.each(
-											data,
-											function(key, info) {
-												items
-														.push("<li id='" + key + "'><span class='pid'>PID: "
-																+ info.pid
-																+ "</span> - <span class='command'>"
-																+ info.command
-																+ "</span></li>");
-											});
-							$("#processes").html(items.join(""));
+			.getJSON(api + "processes")
+			.done(
+				function(data) {
+					var items = [];
+					$.each(
+						data,
+						function(key, info) {
+							items
+								.push("<li id='" + key + "'><span class='pid'>PID: "
+									+ info.pid
+									+ "</span> - <span class='command'>"
+									+ info.command
+									+ "</span></li>");
 						});
+					$("#processes").html(items.join(""));
+				});
 	}
 </script>
+
+</html>

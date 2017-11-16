@@ -68,7 +68,7 @@ public class StatsRestResource {
     private OutboundSseEvent createStatsEvent(final OutboundSseEvent.Builder builder, CpuLoad cpuLoad) {
     	OutboundSseEvent event = builder
     		.id(""+i.getAndIncrement())
-        	.name("message")
+        	.name("stats")
             .data(CpuLoad.class, cpuLoad)
             .mediaType(MediaType.APPLICATION_JSON_TYPE)
             .build();

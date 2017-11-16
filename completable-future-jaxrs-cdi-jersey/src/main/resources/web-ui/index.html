@@ -49,7 +49,7 @@
 	if (!!window.EventSource) {
 		var eventSource = new EventSource(api + "stats/sse");
 
-		eventSource.addEventListener('message', function(e) {
+		eventSource.addEventListener('stats', function(e) {
 			var datapoint = jQuery.parseJSON(event.data);
 			console.log(datapoint);
 			

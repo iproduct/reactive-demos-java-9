@@ -18,6 +18,8 @@
  */
 package org.iproduct.demo.profiler.server;
 
+import javax.servlet.Servlet;
+
 //For running with java 9 use the following JVM options:
 //--add-modules=java.se.ee --permit-illegal-access  --patch-module java.xml.ws.annotation=./myannotation.jar
 import org.apache.cxf.cdi.CXFCdiServlet;
@@ -44,7 +46,7 @@ public final class ProfilerStreamingServer {
         		.toURI()
         		.toString());
         
-        // CXF dispatcher servlet registration 
+        // CXF dispatcher servlet registration
         final CXFCdiServlet cxfServlet = new CXFCdiServlet();
         final ServletHolder cxfServletHolder = new ServletHolder(cxfServlet);
         cxfServletHolder.setInitParameter(CXFCdiServlet.TRANSPORT_ID, SseHttpTransportFactory.TRANSPORT_ID);

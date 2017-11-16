@@ -46,6 +46,6 @@ public class ProfilerApplication extends Application {
         singletons.add(statsRestService);
         singletons.add(processesRestService);
         singletons.add(new JacksonJsonProvider());
-        return singletons;
+        return singletons; 
     }
 }

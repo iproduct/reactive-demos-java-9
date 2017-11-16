@@ -55,7 +55,7 @@ public class ProcessesRestResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public void getJavaProcesses(@Suspended AsyncResponse asyncResp) {
+    public void getJavaProcesses(@Suspended final AsyncResponse asyncResp) {
     	CompletableFuture.supplyAsync(() -> {
     		GenericEntity<List<ProcessInfo>> result =  new GenericEntity<List<ProcessInfo>>(profiler.getJavaProcesses()) {}; //List.of("A", "B", "C", "D"); //.stream().reduce("", (acc, item) -> acc + item);
     		System.out.println(result.getEntity());

@@ -42,7 +42,7 @@ import io.reactivex.Emitter;
 import io.reactivex.Flowable;
 import io.reactivex.schedulers.Schedulers;
 
-@Path("/stats")
+@Path("/stats2")
 @ApplicationScoped
 public class StatsRestResourceRxJava2 {
     private static final Random RANDOM = new Random();

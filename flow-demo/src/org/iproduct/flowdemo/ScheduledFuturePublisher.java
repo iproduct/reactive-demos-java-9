@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 public class ScheduledFuturePublisher<T> extends SubmissionPublisher<T> {
 	private static final String LOG_FORMAT = "Publisher >> [%s] %s%n";
 	static final int MAX_BUFFER_CAPACITY = 256;
-	static final int MAX_ITEMS = 4;
+	static final int MAX_ITEMS = 9;
 	final ScheduledFuture<?> periodicTask;
 	final ScheduledExecutorService scheduler;
 	

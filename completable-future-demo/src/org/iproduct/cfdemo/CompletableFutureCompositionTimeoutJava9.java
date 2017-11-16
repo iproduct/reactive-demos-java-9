@@ -33,7 +33,7 @@ public class CompletableFutureCompositionTimeoutJava9 {
 	public Price getStockPrice(String stockSymbol) {
 		//Simulate long running task
 		try {
-			Thread.sleep(1100);
+			Thread.sleep(900);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
