@@ -34,11 +34,6 @@ public class ProfilerAppClient {
 			    .GET()
 			    .build();
 
-		HttpRequest statsReq = HttpRequest.newBuilder()
-			    .uri(new URI(PROFILER_API_URL + "stats/sse"))
-			    .GET()
-			    .build();
-
 		TypeToken<ArrayList<ProcessInfo>> token = new TypeToken<ArrayList<ProcessInfo>>() {};
 		Gson gson = new GsonBuilder().create();
 		

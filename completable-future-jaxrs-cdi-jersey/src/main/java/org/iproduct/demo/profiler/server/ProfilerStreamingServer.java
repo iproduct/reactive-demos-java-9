@@ -39,21 +39,6 @@ public final class ProfilerStreamingServer {
 	private static final URI BASE_URI = UriBuilder.fromUri("http://localhost:8080/rest").port(8080).build();
 
 	public static void main(final String[] args) throws Exception {
-
-		// CDI 2.0 - Weld
-//		Weld weld = new Weld();
-//		weld.initialize();
-
-
-		// Grizzly config
-		// final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI,
-		// config, false);
-		// HttpHandler httpHandler = new
-		// CLStaticHttpHandler(HttpServer.class.getClassLoader(), "/web-ui/");
-		// server.getServerConfiguration().addHttpHandler(httpHandler, "/javacpu");
-
-		// Jetty config
-//		Server server = JettyHttpContainerFactory.createServer(BASE_URI, createJaxRsApp(), false);
 		
 		final Server server = new Server(8080);
 		
